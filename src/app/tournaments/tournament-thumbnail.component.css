@@ -1,2 +1,6 @@
 .pad-left { margin-left: 10px; }
 .well div { color: #bbb; }
+.thumbnail { min-height: 210px;}
+.red { color: rgb(228, 58, 58); }
+.green { color: #25df25 !important;}
+.bold { font-weight: bold;}

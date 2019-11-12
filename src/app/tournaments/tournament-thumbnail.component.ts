@@ -14,4 +14,12 @@ export class TournamentThumbnailComponent implements OnInit {
   ngOnInit() {
   }
 
+  getStartTimeStyle() {
+    if (this.tournament && this.tournament.time === '05:30pm') {
+      return {color: '#25df25', 'font-weight': 'bold'}
+    }
+    if (this.tournament) {
+      return {color: 'red', 'font-weight': 'bold'};
+    }
+  }
 }

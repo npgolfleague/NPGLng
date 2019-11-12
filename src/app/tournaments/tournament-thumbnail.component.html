@@ -1,12 +1,16 @@
 
     <div class = "well hoverwell thumbnail">
-      <h2>{{tournament.league}}</h2>
-      <div>Course: {{tournament.course}} </div>
-      <div>Date: {{tournament.date}} </div>
-      <div>Time: {{tournament.time}} </div>
-      <div>
-        <span>Location: {{tournament.location.address}}</span>
-        <span class="pad-left">{{tournament.location.city}}, {{tournament.location.phone}}</span>
+      <h2>{{tournament?.league}}</h2>
+      <div>Course: {{tournament?.course}} </div>
+      <div>Date: {{tournament?.date}} </div>
+      <div [ngStyle]="getStartTimeStyle()" [ngSwitch]="tournament?.time">
+        Time: {{tournament?.time}}
+        <span *ngSwitchCase="'05:15pm'" >Early Start</span>
+        <span *ngSwitchDefault>Normal Start</span>
+      </div>
+      <div *ngIf="tournament?.location">
+        <span>Location: {{tournament?.location?.address}}</span>
+        <span class="pad-left">{{tournament?.location?.city}}, {{tournament?.location?.phone}}</span>
       </div>
 
     </div>

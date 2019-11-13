@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { TournamentService } from './shared/tournament.service';
+import { ToastrService } from '../common/toastr.service';
+
 
 @Component({
   selector: 'app-tournaments-list',
@@ -8,91 +11,24 @@ import { Component, OnInit } from '@angular/core';
     <hr>
     <div class="row">
       <div *ngFor = "let tournament of tournaments" class="col-md-5">
-        <app-tournament-thumbnail [tournament]= "tournament"></app-tournament-thumbnail>
+        <app-tournament-thumbnail (click)="handleThumbnailClick(tournament.date)" [tournament]= "tournament"></app-tournament-thumbnail>
       </div>
     </div>
   </div>
   `,
   styleUrls: ['./tournaments-list.component.css']
 })
-export class TournamentsListComponent  {
-  tournaments = [
-    {
-    id: 1,
-    league: 'NPGL',
-    course: 'Eagles Forest',
-    date: '09/26/19',
-    time: '05:15pm',
-    imageUrl: '/assets/images/angularconnect-shield.png',
-    location: {
-        address: 'Nine Eagles Dr',
-        city: 'Odessa',
-        phone: '555-1234'
-    }
-    // pairings: IPairing[]
-  },
-  {
-    id: 2,
-    league: 'NPGL',
-    course: 'Eagles Lakes',
-    date: '10/03/19',
-    time: '05:30pm',
-    imageUrl: '/assets/images/angularconnect-shield.png'
-
-
-    // pairings: IPairing[]
-  },
-  {
-    id: 3,
-    league: 'NPGL',
-    course: 'Eagles Forest',
-    date: '10/10/19',
-    time: '05:30pm',
-    imageUrl: '/assets/images/angularconnect-shield.png',
-    location: {
-        address: 'Nine Eagles Dr',
-        city: 'Odessa',
-        phone: '555-1234'
-    }
-    // pairings: IPairing[]
-  },
-  {
-    id: 4,
-    league: 'NPGL',
-    course: 'Eagles Lakes',
-    date: '09/26/19',
-    time: '05:30pm',
-    imageUrl: '/assets/images/angularconnect-shield.png',
-    location: {
-        address: 'Nine Eagles Dr',
-        city: 'Odessa',
-        phone: '555-1234'
-    }
-    // pairings: IPairing[]
-  },
-  {
-    id: 5,
-    league: 'NPGL',
-    course: 'Eagles Lakes',
-    date: '10/17/19',
-    time: '05:30pm',
-    imageUrl: '/assets/images/angularconnect-shield.png',
-    location: {
-        address: 'Nine Eagles Dr',
-        city: 'Odessa',
-        phone: '555-1234'
-    }
-    // pairings: IPairing[]
+export class TournamentsListComponent implements OnInit  {
+  tournaments: any;
+  constructor(private tournamentService: TournamentService, private toastr: ToastrService) {
   }
-];
 
-/*
- constructor(); { }
-
- ngOnInit();: void {
-    throw new Error("Method not implemented.");
-  };
-*/
+  ngOnInit(): void {
+    this.tournaments = this.tournamentService.getTournaments()
+  }
+  handleThumbnailClick(tournamentDate){
+    this.toastr.success(tournamentDate);
+  }
 }
 
 

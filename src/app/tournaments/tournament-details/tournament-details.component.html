@@ -1,0 +1,18 @@
+<div class="container">
+    <img [src]="tournament?.imageUrl" [alt]="tournament?.league" class="tournament-image">
+
+    <div class="row">
+      <div class="col-md-11">
+        <h2>{{tournament?.name}} </h2>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <div><strong>Date:</strong> {{tournament?.date}}</div>
+        <div><strong>Time:</strong> {{tournament?.time}}</div>
+        <div><strong>Course:</strong> {{tournament?.course}}</div>
+      </div>
+    </div>
+
+  </div>

@@ -1,5 +1,5 @@
 
-    <div class = "well hoverwell thumbnail">
+    <div [routerLink]="['/tournaments', tournament.id]" class = "well hoverwell thumbnail">
       <h2>{{tournament?.league}}</h2>
       <div>Course: {{tournament?.course}} </div>
       <div>Date: {{tournament?.date}} </div>

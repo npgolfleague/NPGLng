@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,13 @@ export class TournamentService {
   constructor() { }
 
   getTournaments(){
-    return TOURNAMENTS;
+    const subject = new Subject();
+    setTimeout(() => { subject.next(TOURNAMENTS); subject.complete(); }, 100);
+    return subject;
+  }
+
+  getTournament(id: number) {
+    return TOURNAMENTS.find(tournament => tournament.id === id);
   }
 }
 

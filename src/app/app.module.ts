@@ -1,25 +1,53 @@
+import {
+  TournamentsListComponent,
+  TournamentThumbnailComponent,
+  TournamentService,
+  TournamentDetailsComponent,
+  CreateTournamentComponent,
+  TournamentListResolver,
+  TournamentRouteActivatorService
+} from './tournaments/index';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { TournamentAppComponent } from './tournament-app.component';
-import { TournamentsListComponent } from './tournaments/tournaments-list.component';
-import { TournamentThumbnailComponent } from './tournaments/tournament-thumbnail.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { TournamentService } from './tournaments/shared/tournament.service';
+import { appRoutes } from './routes';
+import { RouterModule, ActivatedRouteSnapshot } from '@angular/router';
+import { Error404Component } from './errors/error404.component';
 
 @NgModule({
   imports: [
-    BrowserModule
+    BrowserModule,
+    RouterModule.forRoot(appRoutes)
   ],
 
   declarations: [
     TournamentAppComponent,
     TournamentsListComponent,
     TournamentThumbnailComponent,
-    NavbarComponent
+    NavbarComponent,
+    TournamentDetailsComponent,
+    CreateTournamentComponent,
+    Error404Component
   ],
 
-  providers: [ TournamentService],
+  providers: [
+    TournamentService,
+    TournamentRouteActivatorService,
+    {
+      provide: 'canDeactivateCreateTournament',
+      useValue: checkDirtyState
+    },
+    TournamentListResolver
+  ],
   bootstrap: [TournamentAppComponent]
 })
 export class AppModule { }
+
+
+export function checkDirtyState(component: CreateTournamentComponent) {
+  if (component.isDirty) {
+    return window.confirm('You have not saved this tournament, do you really want to cancel?');
+  }
+  return true;
+}

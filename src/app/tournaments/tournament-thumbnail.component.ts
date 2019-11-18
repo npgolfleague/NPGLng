@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { ITournament } from './shared';
 
 
 @Component({
@@ -7,7 +8,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./tournament-thumbnail.component.css']
 })
 export class TournamentThumbnailComponent implements OnInit {
-  @Input() tournament: any;
+  @Input() tournament: ITournament;
 
   constructor() { }
 

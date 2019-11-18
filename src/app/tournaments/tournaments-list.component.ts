@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TournamentService } from './shared/tournament.service';
 import { ToastrService } from '../common/toastr.service';
 import { ActivatedRoute } from '@angular/router';
+import { ITournament } from './shared';
 
 
 @Component({
@@ -19,7 +20,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./tournaments-list.component.css']
 })
 export class TournamentsListComponent implements OnInit  {
-  tournaments: any;
+  tournaments: ITournament[];
   constructor(private tournamentService: TournamentService, private toastr: ToastrService, private route: ActivatedRoute) {
   }
 

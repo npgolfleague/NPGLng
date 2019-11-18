@@ -14,6 +14,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { appRoutes } from './routes';
 import { RouterModule, ActivatedRouteSnapshot } from '@angular/router';
 import { Error404Component } from './errors/error404.component';
+import { AuthService } from './golfer/auth.service';
 
 @NgModule({
   imports: [
@@ -38,7 +39,8 @@ import { Error404Component } from './errors/error404.component';
       provide: 'canDeactivateCreateTournament',
       useValue: checkDirtyState
     },
-    TournamentListResolver
+    TournamentListResolver,
+    AuthService
   ],
   bootstrap: [TournamentAppComponent]
 })

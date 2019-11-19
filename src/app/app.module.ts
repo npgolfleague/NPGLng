@@ -15,12 +15,17 @@ import { appRoutes } from './routes';
 import { RouterModule, ActivatedRouteSnapshot } from '@angular/router';
 import { Error404Component } from './errors/error404.component';
 import { AuthService } from './golfer/auth.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CreateSessionComponent } from './tournaments/tournament-details/create-session.component';
 
 @NgModule({
   imports: [
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(appRoutes)
   ],
+
 
   declarations: [
     TournamentAppComponent,
@@ -29,7 +34,8 @@ import { AuthService } from './golfer/auth.service';
     NavbarComponent,
     TournamentDetailsComponent,
     CreateTournamentComponent,
-    Error404Component
+    Error404Component,
+    CreateSessionComponent
   ],
 
   providers: [

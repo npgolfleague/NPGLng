@@ -13,10 +13,16 @@ export class TournamentService {
     const subject = new Subject<ITournament[]>();
     setTimeout(() => { subject.next(TOURNAMENTS); subject.complete(); }, 100);
     return subject;
+
   }
 
   getTournament(id: number) {
     return TOURNAMENTS.find(tournament => tournament.id === id);
+  }
+  saveTournament(tournament) {
+    tournament.id = 999;
+    tournament.pairings = [];
+    TOURNAMENTS.push(tournament);
   }
 }
 

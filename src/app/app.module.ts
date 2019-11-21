@@ -16,7 +16,7 @@ import { RouterModule, ActivatedRouteSnapshot } from '@angular/router';
 import { Error404Component } from './errors/error404.component';
 import { AuthService } from './golfer/auth.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { CreateSessionComponent } from './tournaments/tournament-details/create-session.component';
+import { CreatePairingComponent } from './tournaments/tournament-details/create-pairing.component';
 
 @NgModule({
   imports: [
@@ -35,7 +35,7 @@ import { CreateSessionComponent } from './tournaments/tournament-details/create-
     TournamentDetailsComponent,
     CreateTournamentComponent,
     Error404Component,
-    CreateSessionComponent
+    CreatePairingComponent
   ],
 
   providers: [

@@ -17,6 +17,6 @@ export interface IPairing {
   id: number;
   startingHole: number;
   golfer: string;
-  quota: number;
-  skinsStrokes: number;
+  quota?: number;
+  skinsStrokes?: number;
 }

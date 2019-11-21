@@ -5,10 +5,12 @@ import { CreateTournamentComponent } from './tournaments/create-tournament.compo
 import { Error404Component } from './errors/error404.component';
 import { TournamentRouteActivatorService } from './tournaments/tournament-details/tournament-route-activator.service';
 import { TournamentListResolver } from './tournaments/tournaments-list-resolver.service';
+import { CreatePairingComponent } from './tournaments';
 
 export const appRoutes: Routes  = [
   { path: 'tournaments', component: TournamentsListComponent, resolve: {tournaments:TournamentListResolver} },
   { path: 'tournaments/new', component: CreateTournamentComponent, canDeactivate: ['canDeactivateCreateTournament'] },
+  { path: 'tournaments/pairing/new', component: CreatePairingComponent },
   { path: 'tournaments/:id', component: TournamentDetailsComponent, canActivate: [TournamentRouteActivatorService] },
   { path: '404', component: Error404Component },
   { path: 'golfer', loadChildren: './golfer/golfer.module#GolferModule' },
